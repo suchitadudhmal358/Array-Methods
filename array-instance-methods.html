@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instance methods in array</title>
+  </head>
+  <body>
+    <script>
+      //Instance Methods
+      //join()
+      const buns = ["eggs", "wonder", "brioche"];
+      console.log(buns.join());
+      console.log(buns.join(" or "));
+      console.log(buns.join(" - "));
+
+      //split - string turns into an array
+      const foodString = "hot dogs,hamburgers,sausages,corn";
+      console.log(foodString.split(","));
+      console.log(foodString.split(""));
+
+      const names = ["wes", "kait", "snickers"];
+      //pop()
+      const lastItem = names.pop();
+      console.log(lastItem);
+      //push()
+      names.push(lastItem);
+      console.log(names);
+
+      //shift()
+      const firstItem = names.shift();
+      console.log(firstItem);
+      //unshift()
+      names.unshift(firstItem);
+      console.log(names);
+
+      let newNames = names.slice(0, name.length - 1);
+      console.log(newNames);
+      newNames = [...newNames, names[names.length - 1]];
+      console.log(newNames);
+
+      //copy array
+      const namesCopy = names.slice(0);
+      console.log(namesCopy);
+
+      const namesCopy2 = [...names];
+      console.log(namesCopy2);
+      console.log(names.splice(1, 2));
+
+      const snickersIndex = namesCopy.indexOf("snickers");
+      console.log(snickersIndex);
+
+      //include()
+      const isInclude = namesCopy.includes("scott");
+      if (!isInclude) {
+        namesCopy.push("scott");
+      }
+      console.log(namesCopy);
+    </script>
+  </body>
+</html>

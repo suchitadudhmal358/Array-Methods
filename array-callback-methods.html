@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Callback Methods in array</title>
+  </head>
+  <body>
+    <script>
+      const feedback = [
+        { comment: "Love the burgs", rating: 4 },
+        { comment: "Horrible Service", rating: 2 },
+        { comment: "Smoothies are great, liked the burger too", rating: 5 },
+        { comment: "Ambiance needs word", rating: 3 },
+        { comment: "I dont like burgers", rating: 1 },
+      ];
+
+      function findBurgRating(singleFeedback) {
+        return singleFeedback.comment.includes("burg");
+      }
+      const burgRtings = feedback.find(findBurgRating);
+      console.log(burgRtings);
+
+      //another way
+      function findByWord(word) {
+        return function (singleFeedback) {
+          return singleFeedback.comment.includes(word);
+        };
+      }
+
+      const burgRating = feedback.find(findByWord("burg"));
+      const smoothieRatings = feedback.find(findByWord("Smoothies"));
+      console.log(burgRating, smoothieRatings);
+
+      //filter()
+      // 1st technic
+      //   const goodReviews = feedback.filter(
+      //     singleFeedback => singleFeedback.rating > 2 //implicit return
+      //   );
+
+      // 2nd technic
+      //   const goodReviews = feedback.filter((singleFeedback) => {
+      //     return singleFeedback.rating > 2; //explicit return
+      //   });
+
+      // 3rd technic - not always good way
+      function filterByMinRating(minRating) {
+        return function (singleFeedback) {
+          return singleFeedback.rating > minRating;
+        };
+      }
+      const goodReviews = feedback.filter(filterByMinRating(2));
+      console.table(goodReviews);
+
+      const burgIncludes = feedback.filter(findByWord("burg"));
+      console.table(burgIncludes);
+
+      // remove 1 start rating
+      const legitRating = feedback.filter(
+        (singleFeedback) => singleFeedback.rating !== 1 //implicit return
+      );
+      console.log(legitRating);
+
+      const meats = {
+        beyond: 10,
+        beef: 5,
+        pork: 7,
+      };
+      //some() - at least one value >=7
+      const atLeastOne = Object.values(meats).some(
+        (meatValue) => meatValue >= 7
+      );
+      console.log(atLeastOne);
+
+      //every() - every value should >=3
+      const everyValue = Object.values(meats).every(
+        (meatValue) => meatValue >= 3
+      );
+      console.log(everyValue);
+
+      //sort()
+      const numbers = [1, 2, 100, 3, 200, 4, 500, 155];
+      console.log(numbers.sort());
+      //ascending order
+      const ascendingOrder = numbers.sort(
+        (firstItem, secondItem) => firstItem - secondItem
+      );
+      console.log(ascendingOrder);
+      //descending order
+      const descendingOrder = numbers.sort(
+        (firstItem, secondItem) => secondItem - firstItem
+      );
+      console.log(descendingOrder);
+
+      //sorting an object
+      const prizes = {
+        hotDog: 453,
+        burger: 765,
+        sausage: 634,
+        corn: 234,
+      };
+
+      const sortByPrizes = Object.entries(prizes).sort(function (a, b) {
+        const aPrize = a[1];
+        const bPrize = b[1];
+        return aPrize - bPrize;
+      });
+      console.table(sortByPrizes);
+      console.table(Object.fromEntries(sortByPrizes));
+    </script>
+  </body>
+</html>

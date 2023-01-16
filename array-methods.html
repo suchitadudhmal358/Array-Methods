@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Static Methods in array</title>
+  </head>
+  <body>
+    <script>
+      //static methods
+      //Array.of - creates array
+      console.log(Array.of("wes", "kait", "scott"));
+
+      //Array.from
+      function createRange(start, end) {
+        const range = Array.from(
+          { length: end - start + 1 },
+          function (item, index) {
+            return index + start;
+          }
+        );
+        return range;
+      }
+      const myRange = createRange(3, 7);
+      console.log(myRange);
+      console.log(Array.isArray(myRange));
+      console.log(typeof myRange);
+
+      //create arrays from objects
+      const meats = {
+        beyond: 10,
+        beef: 5,
+        pork: 7,
+      };
+
+      console.log(Object.entries(meats));
+      console.log(Object.keys(meats));
+      console.log(Object.values(meats));
+
+      Object.entries(meats).forEach((entry) => {
+        //   const key = entry[0]
+        //   const value = entry[1]
+        //   console.log(key, value)
+        //another way to doing this is
+        const [key, value] = entry;
+        console.log(key, value);
+      });
+      // another simple way to doing this function
+      Object.entries(meats).forEach(([meat, qty]) => {
+        console.log(meat, qty);
+      });
+    </script>
+  </body>
+</html>

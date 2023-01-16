@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arrays</title>
+  </head>
+  <body>
+    <script>
+      const names = ["wes", "kait", "snickers"];
+      console.log(names[0]);
+      console.log(names.length);
+      console.log(names[names.length - 1]); //to get last element in array
+
+      //add items in array
+      names.push("lux"); //add from last
+      console.log(names);
+      const names2 = [...names, "lux"]; //another method to add
+      names.unshift("poppy");
+      console.log(names); // add from first
+      const names3 = ["mickel", ...names];
+      console.log(names3);
+
+      //delete kait in names by finding its index
+      const kaitIndex = names.findIndex((name) => name === "kait");
+      console.log(kaitIndex);
+      const newArrayWithoutKait = [
+        ...names.slice(0, kaitIndex),
+        ...names.slice(kaitIndex + 1),
+      ];
+      console.log(newArrayWithoutKait);
+
+      //Mutable -  change original data
+      const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+      console.log(numbers.reverse());
+
+      //Immutable - do not change original data
+      const slices = numbers.slice(2, 5);
+      console.log(slices);
+      console.log(numbers);
+
+      //add item in middle
+      const bikes = ["bianchi", "miele", "panasonic", "miyata"];
+      const newBikes = [...bikes.slice(0, 2), "benotto", ...bikes.slice(2)];
+      console.log(newBikes);
+
+      //delete item in middle
+      const newBikes2 = [...newBikes.slice(0, 3), ...newBikes.slice(4)];
+      console.log(newBikes2);
+
+      //delete object in array by its key-value
+      const comments = [
+        { text: "Cool Beans", id: 123 },
+        { text: "Love this", id: 133 },
+        { text: "Neato", id: 233 },
+        { text: "good bikes", id: 333 },
+        { text: "so good", id: 433 },
+      ];
+      function deleteComment(id, comments) {
+        const commentIndex = comments.findIndex((comment) => comment.id === id);
+        return [
+          ...comments.slice(0, commentIndex),
+          ...comments.slice(commentIndex + 1),
+        ];
+      }
+      console.log(comments);
+      const deletedComment = deleteComment(233, comments);
+      console.log(deletedComment);
+    </script>
+  </body>
+</html>

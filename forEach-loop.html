@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>forEach Loop</title>
+  </head>
+  <body>
+    <script>
+      const toppings = [
+        "Mushrooms",
+        "Tomatoes",
+        "Eggs",
+        "Chili",
+        "Lettuce",
+        "Avocado",
+        "Chilles",
+        "Bacon",
+        "Pickles",
+        "Onions",
+        "Cheese",
+      ];
+
+      toppings.forEach((topping) => console.log(topping));
+
+      function loopToppings(topping, index, originalArray) {
+        const nextTopping = originalArray[index + 1];
+        const preTopping = originalArray[index - 1];
+
+        console.log(topping);
+        preTopping ? console.log(preTopping) : null;
+        nextTopping ? console.log(nextTopping) : null;
+        index === originalArray.length - 1
+          ? console.log("GoodBye")
+          : console.log("Getting the next Topping");
+        console.log("-------------------");
+      }
+      toppings.forEach(loopToppings);
+    </script>
+  </body>
+</html>
